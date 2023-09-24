@@ -1,0 +1,26 @@
+.authentication{
+    margin-top: 64px;
+}
+.bodySignup{
+    background-color: #E8E8E8;
+    width: 100%;
+    padding:5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+}
+.signupContainer{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+    padding:2rem;
+    height: 100%;
+    align-items: center;
+    background-color:white;
+}
+
+.signin{
+    display: flex;
+    margin-top: 15px;
+}

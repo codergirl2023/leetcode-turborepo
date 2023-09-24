@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalDotEnv": [".env"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "dev:user-frontend": {
+        "outputs": ["dist/**", ".next/**"],
+        "env": ["USERNAME1","PASSWORD","DB_NAME","CLUSTER","SECRET"]
+      }
+    },
+    "lint": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

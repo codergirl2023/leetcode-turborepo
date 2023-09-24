@@ -1,0 +1,18 @@
+.bodyProblem{
+    display: flex;
+    flex-direction: row;
+    margin:1rem;
+}
+.problemDefinition{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    padding-right: 1rem;
+    overflow-y: scroll;
+}
+
+.codingArena{
+    height:90vh;
+    width:50vw;
+    overflow-y: scroll;
+}

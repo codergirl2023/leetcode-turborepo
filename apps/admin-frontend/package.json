@@ -1,0 +1,22 @@
+{
+  "name": "admin-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.35.3",
+    "@trpc/client": "^10.38.4",
+    "@trpc/next": "^10.38.4",
+    "@trpc/react-query": "^10.38.4",
+    "@trpc/server": "^10.38.4",
+    "next": "^13.5.2",
+    "trpc": "*",
+    "ui": "*",
+    "zod": "^3.22.2"
+  }
+}
