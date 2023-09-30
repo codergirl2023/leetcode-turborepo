@@ -25,7 +25,6 @@ export default function SignupPage() {
             setUser({ username: username, isLoading: false })
             router.push("/problemSet/all");
         }).catch((e) => {
-            // alert(e.response.data.message);
             setFailMsg(e.response.data.message)
         });
     }

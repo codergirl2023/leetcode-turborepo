@@ -3,13 +3,12 @@ import { useSetRecoilState } from "recoil";
 import axios from "axios";
 import { useEffect } from "react";
 
-export function InitUser() {
+export function InitUser({apiUrl}:{apiUrl:string}) {
     const setUser = useSetRecoilState(userState);
     const init = async () => {
         try {
-            const response = await axios.get('/api/users/me', {
+            const response = await axios.get(`${apiUrl}`, {
             })
-            console.log("user appbar =",response.data.username)
             if (response.data.username) {
                 setUser({
                     isLoading: false,

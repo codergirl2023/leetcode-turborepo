@@ -1,27 +1,19 @@
 import '@/styles/globals.css'
 import type { AppType } from 'next/app'
-import { Navbar } from 'ui';
+import  Navbar  from '../../components/Navbar';
 import { InitUser } from 'ui';
 import { RecoilRoot } from 'recoil';
 import '../styles/Home.module.css';
 import { trpc } from '../utils/trpc';
 
-// export default function App({ Component, pageProps }: AppProps) {
-//   return <RecoilRoot>
-//     <Navbar />
-//     <InitUser/>
-//     <Component {...pageProps} />
-//   </RecoilRoot>
-// }
-// import type { AppType } from 'next/app';
-// import { trpc } from '../utils/trpc';
-
 const MyApp: AppType = ({ Component, pageProps }) => {
+ 
+  // const handleLogout = ;
   return <RecoilRoot>
     <Navbar />
-    <InitUser/>
+    <InitUser apiUrl={'/api/admin/me'} />
     <Component {...pageProps} />
   </RecoilRoot>
 };
-
+// export default MyApp;
 export default trpc.withTRPC(MyApp);

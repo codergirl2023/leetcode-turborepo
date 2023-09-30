@@ -36,8 +36,8 @@ function CardComp({ company }: { company: { image: typeof Image; name: string } 
                             <Image
                                 src={company.image}
                                 alt={`Logo of ${company.name}`}
-                                layout="fill"
-                                objectFit="contain"
+                                width={300} height={150}
+                               style={{left:"50px"}}
                             />
                         </div>
                         <CardContent>

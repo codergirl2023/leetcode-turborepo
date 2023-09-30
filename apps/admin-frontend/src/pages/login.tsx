@@ -1,4 +1,3 @@
-import { useSetRecoilState } from "recoil";
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -8,11 +7,11 @@ import { Alert } from "@mui/material";
 export default function LoginPage() {
     const router = useRouter()
     const [failMsg, setFailMsg] = useState(null);
-    const handleLogin = (email: string, password: string) => {
+    const handleLogin = (username: string, password: string) => {
         axios
             .post('/api/admin/login', {}, {
                 headers: {
-                    email: email,
+                    username: username,
                     password: password
                 }
             })
@@ -30,7 +29,5 @@ export default function LoginPage() {
 
         </div>
         <Login onClick={handleLogin} />
-
-
     </div>;
 }

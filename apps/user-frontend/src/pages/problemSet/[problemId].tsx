@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Typography, } from "@mui/material";
-import '../assets/static/Problem.css'
 import { IProblem, exampleArr } from 'types/src';
 import CodingArena from "../../../components/CodingArena";
 import { useRouter } from "next/router";
-
+import { trpc } from "@/utils/trpc";
 /**
  * 
  * Sample response of /problemset/id->[
@@ -32,30 +31,13 @@ export default function Problem() {
     };
     const router = useRouter();
 
-    const { problemId } = router.query;
-    const [problem, setProblem] = useState<IProblem>(initialProblemState);
-
-    useEffect(() => {
-        axios
-            .get('/problemset/' + problemId, {
-                headers: {
-                    "authorization": "Bearer " + localStorage.getItem("token"),
-                },
-            })
-            .then((response) => {
-                setProblem(response.data[0]);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
-
-    let examples: exampleArr = { examples: [] };
-
-    if (Object.keys(problem).length > 0 && problem.examples) {
-        examples = JSON.parse(problem.examples);
-    }
-
+    const problemId = router.query.problemId as string;
+    const { data } = trpc.byId.useQuery({ id: problemId });
+    const problem = data?.problem || {}; // Use an empty object as a fallback
+    console.log("problem =", problem);
+    
+    // Assuming problem.examples is an array, directly assign it to examples
+    let examples: exampleArr = problem?.examples || { examples: [] };
 
     return (
         <div className={"bodyProblem"}>

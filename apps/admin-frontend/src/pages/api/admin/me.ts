@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { verify } from 'jsonwebtoken';
-import { User } from 'db/src';
+import { Admins } from 'db/src';
 import { Data, JwtPayload } from 'types/src';
 import { connectToDB } from 'db/src';
 
@@ -24,7 +24,7 @@ export default async function handler(
     } else {
         user = verify(token, SECRET) as JwtPayload;
 
-        const userFound = await User.find({ username: user.username });
+        const userFound = await Admins.find({ username: user.username });
         if (!userFound.length) {
             res.status(403).json({ message: "User doesn't exist" })
             return

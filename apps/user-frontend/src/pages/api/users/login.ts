@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { User } from 'db/src';
+import { Users } from 'db/src';
 import { sign } from 'jsonwebtoken';
 import { serialize } from 'cookie';
 import { connectToDB } from 'db/src';
@@ -16,9 +16,9 @@ export default async function handler(
     if (!SECRET) {
         return res.status(500).json({ "message": "Secret key is missing" });
     }
-    await connectToDB();
+     connectToDB();
     const { username, password } = req.headers;
-    const user = await User.find({ username, password });
+    const user = await Users.find({ username, password });
     if (!user.length) {
         return res.status(403).send({ 'message': 'Email or Password is incorrect. Please try with correct email/password' });
     } else {

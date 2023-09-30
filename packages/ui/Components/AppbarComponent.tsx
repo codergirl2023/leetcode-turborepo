@@ -7,7 +7,9 @@ import { usernameState } from "store/src";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useRouter } from "next/router";
 
-function AppbarComponent() {
+function AppbarComponent(props: {
+    onClick: () => void
+}) {
     const userLoading = useRecoilValue(isUserLoading);
     const username = useRecoilValue(usernameState);
     const setUser = useSetRecoilState(userState);
@@ -46,11 +48,7 @@ function AppbarComponent() {
                     <Button
                         variant="contained"
                         onClick={() => {
-                            setUser({
-                                isLoading: false,
-                                username: null,
-                            });
-                            router.push("/");
+                            props.onClick()
                         }}
                     >
                         Logout

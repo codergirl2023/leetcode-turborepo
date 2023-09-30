@@ -1,4 +1,4 @@
-import { IUser, ISubmission, IProblemDB } from "types/src";
+import { IUser, ISubmission, IProblemDB, IAdmin } from "types/src";
 import mongoose from "mongoose";
 import { Schema } from 'mongoose';
 
@@ -57,7 +57,7 @@ const ProblemsSchema = new mongoose.Schema({
     }
 });
 const AdminSchema = new mongoose.Schema({
-    email: {
+    username: {
         type: String
     },
     password: {
@@ -68,8 +68,10 @@ const AdminSchema = new mongoose.Schema({
     }
 });
 
-export const Problems = mongoose.models.Problems<IProblemDB> || mongoose.model<IProblemDB>("Problems", ProblemsSchema);
-
 export const Submissions = mongoose.models.Submissions<ISubmission> || mongoose.model("Submissions", SubmissionsSchema);
 
-export const Users = mongoose.models.User<IUser> || mongoose.model<IUser>("User", UserSchema);
+export const Admins = mongoose.models.Admins<IAdmin> || mongoose.model<IAdmin>("Admins", AdminSchema);
+
+export const Problems = mongoose.models.Problems<IProblemDB> || mongoose.model<IProblemDB>("Problems", ProblemsSchema);
+
+export const Users = mongoose.models.Users<IUser> || mongoose.model<IUser>("Users", UserSchema);

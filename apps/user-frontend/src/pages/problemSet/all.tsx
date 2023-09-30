@@ -1,8 +1,7 @@
-import axios from "axios";
 import React from 'react';
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import {
-   Link,
+    Link,
     Paper,
     Table,
     TableBody,
@@ -14,39 +13,28 @@ import {
 } from "@mui/material";
 import CompanyWiseQuestionsList from "../../../components/CompanyWiseQuestionsList"
 import { IProblem } from "types/src";
+import { trpc } from '@/utils/trpc';
 
-interface problemSet extends Array<IProblem>{
-    problem?:IProblem[]
+interface problemSet extends Array<IProblem> {
+    problem?: IProblem[]
 }
 
 function ProblemSet() {
-    const [problems, setProblems] = useState<problemSet>([]);
-    useEffect(() => {
-        axios
-            .get('/api/problemSet/all', {
-                headers: {
-                    'authorization': "Bearer " + localStorage.getItem('token')
-                }
-            })
-            .then((response) => {
-                setProblems(response.data.problemSet);
-            })
-            .catch((error) => {
-                console.log("Error fetching problems:", error);
-            });
-    }, []);
-    return (
-        <div>
-            <CompanyWiseQuestionsList/>
-            <div style={{display:"flex", marginTop:"5rem"}}>
-                <TableComp problems={problems} />
-            </div>
+    let problems = [];
+    const problemsQueryResult = trpc.allProblems.useQuery();
+    problems = problemsQueryResult.data?.problemSet || [];
+
+    return (<div>
+        <CompanyWiseQuestionsList />
+        <div style={{ display: "flex", marginTop: "5rem" }}>
+            <TableComp problems={problems} />
         </div>
+    </div>
     );
 }
 const columnsHeaderRow = ["Title", "Difficulty", "Acceptance"]
 
-function TableComp({problems}:{problems:problemSet}) {
+function TableComp({ problems }: { problems: problemSet }) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -58,7 +46,7 @@ function TableComp({problems}:{problems:problemSet}) {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
-    
+
 
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -68,7 +56,7 @@ function TableComp({problems}:{problems:problemSet}) {
                         <TableRow>
                             {columnsHeaderRow.map((columnHeader, index) => (
                                 <TableCell key={index}>
-                                    {columnHeader}  
+                                    {columnHeader}
                                 </TableCell>
                             ))}
                         </TableRow>
@@ -80,15 +68,15 @@ function TableComp({problems}:{problems:problemSet}) {
                                 return (
                                     <TableRow
                                         key={problem._id}
-                                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell component="th" scope="row">
-                                            
-                                        <Link href={`/problemSet/${problem._id}`}>{problem.title}</Link>
-                                     </TableCell>
+
+                                            <Link href={`/problemSet/${problem._id}`}>{problem.title}</Link>
+                                        </TableCell>
                                         <TableCell>{problem.acceptance}</TableCell>
                                         <TableCell
-                                            sx={{color: problem.difficulty === "Easy" ? "green" : problem.difficulty === "Medium" ? "orange" : "red"}}>{problem.difficulty}</TableCell>
+                                            sx={{ color: problem.difficulty === "Easy" ? "green" : problem.difficulty === "Medium" ? "orange" : "red" }}>{problem.difficulty}</TableCell>
 
                                     </TableRow>
                                 );

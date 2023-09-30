@@ -8,7 +8,9 @@ import DrawerSmallScreenComponent from "./DrawerComponent";
 import AppbarComponent from "./AppbarComponent";
 import Image from 'next/image';
 
-export function Navbar() {
+export function Navbar(props: {
+    onClick: () => void
+}) {
     const theme = createTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     return (
@@ -31,7 +33,7 @@ export function Navbar() {
                         Leetcode
                     </Link>
                 </div>
-                {isMobile ? (<DrawerSmallScreenComponent />) : (<AppbarComponent />)}
+                {isMobile ? (<DrawerSmallScreenComponent />) : (<AppbarComponent onClick={props.onClick} />)}
             </Toolbar>
         </AppBar>
     );

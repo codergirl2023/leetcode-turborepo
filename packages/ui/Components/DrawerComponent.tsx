@@ -42,7 +42,6 @@ function DrawerComponent() {
                         <ListItem >
                             <ListItemText onClick={() => {
                                 setOpenDrawer(false);
-                                localStorage.setItem("token", "");
                                 // Update the authState to indicate the user is not authenticated
                                 setUser({
                                     isLoading: false,

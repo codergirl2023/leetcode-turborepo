@@ -7,7 +7,7 @@ export function WorkInProgress() {
                 src="/WorkInProgress.jpg"
                 alt="work in progress"
                 width={0} height={0}
-                sizes="100vw" />
+                sizes="100vw" priority={true}/>
         </div>
     );
 }

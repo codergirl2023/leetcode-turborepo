@@ -36,7 +36,7 @@ const CodingArena = ({ problem }:{problem:IProblem}) => {
           },
           {
             headers: {
-              "authorization": "Bearer " + localStorage.getItem('token'), // Use "Authorization" key
+              
               "Content-Type": "application/json" // Use "Content-Type" key
             }
           }

@@ -6,8 +6,6 @@ export interface JwtPayload {
 
 export type Data = {
     message?: string;
-    courseId?: number;
-    courses?: any,
     username?: JwtPayload | string
 }
 
@@ -16,8 +14,9 @@ export interface IUser{
     password:string;
     fullName:string;
 }
+
 export interface IAdmin{
-    email:string;
+    username:string;
     password:string;
     fullName:string;
 }
