@@ -1,4 +1,4 @@
-# LeetCode React - Local Development Setup
+# LeetCode with Turborepo & tRPC
 
 To run the LeetCode React website locally, follow these steps:
 
