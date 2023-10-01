@@ -1,81 +1,51 @@
-# Turborepo starter & tRPC
+# LeetCode React - Local Development Setup
 
-This is an official starter Turborepo.
+To run the LeetCode React website locally, follow these steps:
 
-## Using this example
+## Step 1: Setup Frontend
 
-Run the following command:
+1. Navigate to the client directory:
+   ```bash
+   cd client
+   ```
 
-```sh
-npx create-turbo@latest
-```
+2. Install the required dependencies:
+   ```bash
+   npm i
+   ```
 
-## What's inside?
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-This Turborepo includes the following packages/apps:
+4. The frontend will be hosted locally.
 
-### Apps and Packages
+## Step 2: Setup Backend
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+1. Navigate to the server directory:
+   ```bash
+   cd server
+   ```
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+2. Install the required dependencies:
+   ```bash
+   npm i
+   ```
 
-### Utilities
+3. Start the backend server:
+   ```bash
+   node index.js
+   ```
 
-This Turborepo has some additional tools already setup for you:
+4. The backend will now be running.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Visit the Website
 
-### Build
+1. Open your web browser and go to [http://localhost:YOUR_PORT](http://localhost:YOUR_PORT) (Replace `YOUR_PORT` with the port number your frontend is running on).
 
-To build all apps and packages, run the following command:
+2. Create a new user account.
 
-```
-cd my-turborepo
-pnpm build
-```
+3. You will be redirected to the "Problem Set/All" page, which displays all the questions.
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+Enjoy using LeetCode!
